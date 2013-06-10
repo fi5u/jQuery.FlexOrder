@@ -3,11 +3,12 @@ A jQuery plugin that simulates flex-order by taking a last child element and mov
 
 ### Usage
 ```javascript
-flexOrder( flexBreakPoint, flexItem );
+$('#selectorID').flexorder();
 ```
-flexBreakPoint = integer - point at which flexTarget element moves back into original flow.
+`$('#selectorID')` is the element that should be flexed.
 
-flexItem = dom element - item to move.
+### Optional parameters
+* flexBreakPoint (integer) - Point at which flexTarget element moves back into original flow.
 
 ###License
 MIT [http://rem.mit-license.org](http://rem.mit-license.org)

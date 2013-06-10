@@ -1,20 +1,26 @@
-function flexOrder(flexBreakPoint, flexItem) {
+(function($){
 
-    /*
-    / flexBreakPoint = integer - point at which flexTarget element moves back into original flow
-    / flexItem = dom element - item to move
-    */
+    $.fn.flexorder = function( options ) {
 
-    var winW = $(window).width();
-    var flexTarget = $(flexItem).parent();
-
-    if( $(".flex-order").length ) {
-        if( winW < flexBreakPoint && !$("body").hasClass("flexed") ) {
-            $(flexItem).prependTo(flexTarget);
-            $("body").addClass("flexed");
-        } else if( winW >= flexBreakPoint && $("body").hasClass("flexed") ) {
-            $(flexItem).appendTo(flexTarget);
-            $("body").removeClass("flexed");
+        var settings = {
+            flexBreakPoint : 960
         }
+
+        if (options) {
+            $.extend( settings, options );
+        }
+
+        return this.each(function(i, el) {
+            alert(settings.flexBreakPoint);
+            var winW = $(window).width();
+            var flexTarget = $(el).parent();
+            if( winW < settings.flexBreakPoint && !$("body").hasClass("flexorder-flexed") ) {
+                $(el).prependTo(flexTarget);
+                $("body").addClass("flexorder-flexed");
+            } else if( winW >= settings.flexBreakPoint && $("body").hasClass("flexorder-flexed") ) {
+                $(el).appendTo(flexTarget);
+                $("body").removeClass("flexorder-flexed");
+            }
+        });
     }
-}
+})( jQuery );
