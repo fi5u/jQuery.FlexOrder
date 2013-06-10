@@ -8,7 +8,7 @@ $('#selectorID').flexorder();
 `$('#selectorID')` is the element that should be flexed.
 
 ### Optional parameters
-* flexBreakPoint (integer) - Point at which flexTarget element moves back into original flow.
+* breakpoint (integer) - Point at which `$('#selectorID')` element moves back into the original flow.
 
 ###License
 MIT [http://rem.mit-license.org](http://rem.mit-license.org)
