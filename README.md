@@ -14,5 +14,14 @@ $('#selectorID').flexorder();
 * targetContainer (DOM element) - The element into which selector element should be moved to **default: parent of selector element**.
 * targetPosition (string: "start" / "end") - The point in the target container where the selector element should be placed **default: "start"**.
 
+### Options usage
+```javascript
+$('#selectorID').flexorder({
+    breakpoint: 420,
+    targetContainer: $('#container1'),
+    targetPosition: "end"
+});
+```
+
 ###License
 See LICENCE.md
