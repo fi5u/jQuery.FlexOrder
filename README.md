@@ -10,7 +10,7 @@ $('#selectorID').flexorder();
 `$('#selectorID')` is the element that should be flexed.
 
 ### Optional parameters
-* breakpoint (integer) - Point at which `$('#selectorID')` element moves back into the original flow **default: 960**.
+* breakpoint (integer) - The pixel width of the viewport at which `$('#selectorID')` element moves back into the original flow **default: 960**.
 * targetContainer (DOM element) - The element into which selector element should be moved to **default: parent of selector element**.
 * targetPosition (string: "start" / "end") - The point in the target container where the selector element should be placed **default: "start"**.
 
