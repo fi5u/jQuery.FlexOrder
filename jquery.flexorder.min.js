@@ -1,5 +1,5 @@
 /*
- * jquery.flexorder.js 1.0
+ * jquery.flexorder.js 1.1
  *
  * Copyright 2013, Tommy Fisher http://www.tommyfisher.net
  *
