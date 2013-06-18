@@ -6,6 +6,7 @@
  */
 
 (function($) {
+
     "use strict";
 
     $.fn.flexorder = function(options) {
@@ -33,16 +34,17 @@
 
             var initiateFlexorder = function() {
                 var winW = $(window).width();
-                if (winW < settings.breakpoint && !$("body").hasClass("flexorder-flexed")) {
+
+                if (winW < settings.breakpoint && !$(el.parentNode).hasClass("flexorder-flexed")) {
                     /* flex the order of the item */
 
                     if (settings.targetPosition === "start") {
-                        $(el).prependTo(settings.targetContainer[0]);
+                        $(el).prependTo(settings.targetContainer[i]);
                     } else {
-                        $(el).appendTo(settings.targetContainer[0]);
+                        $(el).appendTo(settings.targetContainer[i]);
                     }
-                    $("body").addClass("flexorder-flexed");
-                } else if (winW >= settings.breakpoint && $("body").hasClass("flexorder-flexed")) {
+                    $(el.parentNode).addClass("flexorder-flexed");
+                } else if (winW >= settings.breakpoint && $(el.parentNode).hasClass("flexorder-flexed")) {
                     /* return the flexed item back into the orignal flow */
                     if (originalLocation.parent) {
                         /* element was a first child */
@@ -52,7 +54,7 @@
                         /* add a line break to preserve inline-block spacing */
                         $(originalLocation.prev).after(el).after("\n");
                     }
-                    $("body").removeClass("flexorder-flexed");
+                    $(el.parentNode).removeClass("flexorder-flexed");
                 }
             };
 
@@ -63,4 +65,5 @@
             });
         });
     };
+
 }(jQuery));
