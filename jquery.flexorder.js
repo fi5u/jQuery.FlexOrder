@@ -45,6 +45,8 @@
                     }
                     $(el.parentNode).addClass("flexorder-flexed");
                 } else if (winW >= settings.breakpoint && $(el.parentNode).hasClass("flexorder-flexed")) {
+                    $(el.parentNode).removeClass("flexorder-flexed");
+
                     /* return the flexed item back into the orignal flow */
                     if (originalLocation.parent) {
                         /* element was a first child */
@@ -54,7 +56,6 @@
                         /* add a line break to preserve inline-block spacing */
                         $(originalLocation.prev).after(el).after("\n");
                     }
-                    $(el.parentNode).removeClass("flexorder-flexed");
                 }
             };
 
