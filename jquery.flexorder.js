@@ -9,6 +9,9 @@
 
     "use strict";
 
+    /* create an iteration var to help in the creation of the class */
+    var iteration = 0;
+
     $.fn.flexorder = function(options) {
 
         var settings = {
@@ -16,6 +19,7 @@
             targetContainer : $(this).parent(),
             targetPosition : "start"
         };
+
 
         if (options) {
             $.extend(settings, options);
@@ -32,20 +36,26 @@
                 originalLocation.parent = $(el).parent()[0];
             }
 
+            /* create a class to add to the flexed parent */
+            var flexClass = "flexorder-flexed" + iteration;
+
             var initiateFlexorder = function() {
                 var winW = $(window).width();
 
-                if (winW < settings.breakpoint && !$(el.parentNode).hasClass("flexorder-flexed")) {
+                if (winW < settings.breakpoint && !$(el.parentNode).hasClass(flexClass)) {
                     /* flex the order of the item */
 
                     if (settings.targetPosition === "start") {
                         $(el).prependTo(settings.targetContainer[i]);
+
+                        /* if added to the start add in a linebreak after to preserve inline-block spacing */
+                        $(el).before("\n");
                     } else {
                         $(el).appendTo(settings.targetContainer[i]);
                     }
-                    $(el.parentNode).addClass("flexorder-flexed");
-                } else if (winW >= settings.breakpoint && $(el.parentNode).hasClass("flexorder-flexed")) {
-                    $(el.parentNode).removeClass("flexorder-flexed");
+                    $(el.parentNode).addClass(flexClass);
+                } else if (winW >= settings.breakpoint && $(el.parentNode).hasClass(flexClass)) {
+                    $(el.parentNode).removeClass(flexClass);
 
                     /* return the flexed item back into the orignal flow */
                     if (originalLocation.parent) {
@@ -57,6 +67,8 @@
                         $(originalLocation.prev).after(el).after("\n");
                     }
                 }
+
+
             };
 
             initiateFlexorder();
@@ -64,6 +76,9 @@
             $(window).resize(function() {
                 initiateFlexorder();
             });
+
+            /* increment the iteration */
+            ++iteration;
         });
     };
 
