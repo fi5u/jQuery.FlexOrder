@@ -67,15 +67,19 @@
                         $(originalLocation.prev).after(el).after("\n");
                     }
                 }
-
-
             };
 
             initiateFlexorder();
 
             $(window).resize(function() {
-                initiateFlexorder();
-            });
+                var timer = null;
+                return function() {
+                    clearTimeout(timer);
+                    timer = setTimeout(initiateFlexorder, 100);
+                };
+
+                //initiateFlexorder();
+            }());
 
             /* increment the iteration */
             ++iteration;
